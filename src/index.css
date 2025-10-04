@@ -1,0 +1,164 @@
+/* En src/index.css */
+
+:root {
+  /* Paleta de colores (sin cambios) */
+  --color-fondo: #1a0a1f;
+  --color-superficie: #1e1e1e;
+  --color-texto: #ffffff;
+  --color-rosa: #EF22F2;
+  --color-azul-brillante: #0C9AF2;
+  --color-cyan: #0CDBF2;
+  --neon-glow-rosa: 0 0 5px #EF22F2, 0 0 10px #EF22F2, 0 0 15px #EF22F2;
+  --neon-glow-cyan: 0 0 5px #0CDBF2, 0 0 10px #0CDBF2, 0 0 15px #0CDBF2;
+
+  /* --- NUEVO: TAMAÑOS DE FUENTE FLUIDOS --- */
+  /* 'vw' significa 'viewport width' o 'ancho de la pantalla' */
+  --font-size-base: clamp(10px, 2vw, 14px); /* Mín 10px, Máx 14px */
+  --font-size-lg: clamp(14px, 3vw, 20px);
+  --font-size-xl: clamp(24px, 5vw, 48px);
+  --font-size-md: clamp(12px, 2.5vw, 16px);
+}
+
+@keyframes move-background {
+  0% { background-position: 0 0; }
+  100% { background-position: -100px 100px; }
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  animation: move-background 10s linear infinite;
+  
+  /* Aplicamos el tamaño de fuente base */
+  font-size: var(--font-size-base);
+}
+
+#root {
+  /* ANTES: max-width: 900px; */
+  /* AHORA: */
+  max-width: 1500px; /* Le damos más espacio para que se expanda */
+  margin: 0 auto;
+  padding: 0 2rem; /* Añadimos padding a los lados */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* --- ESTILOS MEJORADOS CON FUENTES FLUIDAS --- */
+input, button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: var(--font-size-md); /* Tamaño mediano para inputs/botones */
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 2px solid var(--color-cyan);
+  background-color: var(--color-superficie);
+  color: var(--color-texto);
+  box-shadow: var(--neon-glow-cyan);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--color-cyan);
+  font-weight: bold;
+}
+
+button:not(:after):hover {
+  background-color: var(--color-cyan);
+  color: var(--color-texto);
+  transform: scale(1.05);
+}
+
+button:not(:disabled):hover {
+  background-color: var(--color-cyan);
+  color: var(--color-fondo);
+  transform: scale(1.05);
+}
+
+h1 { font-size: var(--font-size-xl); }
+h2 { font-size: var(--font-size-lg); }
+h3, h4 { font-size: var(--font-size-md); }
+
+h1, h2, h3, h4 {
+  text-transform: uppercase;
+  text-shadow: var(--neon-glow-rosa);
+}
+
+/* Encabezado y pie de página con fuentes fluidas */
+.header {
+  position: absolute;
+  top: 20px;
+  left: 20px;  /* Cambiamos 'right' por 'left' */
+  text-align: left; /* Alineamos el texto a la izquierda */
+}
+
+.header-brand {
+  font-size: var(--font-size-lg);
+  color: var(--color-texto);
+  text-shadow: var(--neon-glow-rosa);
+  margin: 0;
+}
+
+.header-sub {
+  font-size: var(--font-size-base);
+  color: var(--color-cyan);
+  text-shadow: none;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #444;
+  font-size: clamp(8px, 1.5vw, 10px); /* Tamaño extra pequeño para el footer */
+  letter-spacing: 2px;
+}
+
+.main-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  color: white;
+  text-shadow: var(--neon-glow-rosa);
+  margin: 10px 0 20px 0;
+  transition: all 0.3s ease-in-out;
+}
+.main-title:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #EF22F2, 0 0 20px #EF22F2, 0 0 30px #EF22F2;
+}
+
+/* Ya no necesitamos la media query para el tamaño de fuente, 
+   pero la mantenemos para otros ajustes como el padding */
+
+@media (max-width: 800px) {
+
+  .header {
+    position: static; /* Quitamos el posicionamiento absoluto */
+    width: 100%;
+    text-align: center; /* Centramos el texto */
+    margin-bottom: 2rem; /* Añadimos un margen para separarlo del contenido */
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  input, button {
+    width: 90%;
+    box-sizing: border-box;
+  }
+
+    input[type="text"] {
+    font-size: 16px;
+    }
+}

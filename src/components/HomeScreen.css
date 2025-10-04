@@ -1,0 +1,89 @@
+/* En src/components/HomeScreen.css */
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Usamos min-height para asegurar que siempre haya espacio */
+  padding: 20px;
+  box-sizing: border-box; /* Importante para responsividad */
+}
+
+/* --- NUEVO: ESTILO PARA EL TÍTULO PRINCIPAL --- */
+/* Cambiamos la fuente solo para este título para que sea más legible */
+.main-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(2.5rem, 10vw, 5rem); /* Hacemos la fuente fluida y grande */
+    color: white;
+    text-shadow: var(--neon-glow-rosa); /* Mantenemos el brillo */
+    margin: 10px 0 20px 0; /* Ajustamos márgenes */
+    transition: all 0.3s ease-in-out; /* Transición suave para hover */
+}
+
+.main-title:hover {
+  transform: scale(1.05); /* Lo agrandamos un 5% */
+  
+  /* Hacemos que el brillo de neón sea más intenso */
+  text-shadow: 0 0 10px #EF22F2, 0 0 20px #EF22F2, 0 0 30px #EF22F2;
+}
+
+.start-form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Asegura que el contenido interno esté centrado */
+  width: 100%;
+  max-width: 400px;
+}
+
+/* --- NUEVO: ESTILO PARA EL BOTÓN PRINCIPAL --- */
+/* Lo hacemos más alto (más largo hacia abajo) */
+.start-form .start-button {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* --- ESTILOS AJUSTADOS PARA BOTONES SECUNDARIOS --- */
+.soon-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column; /* Apila los elementos verticalmente */
+  align-items: center;
+  gap: 15px; /* Espacio entre el botón de arriba y el par de abajo */
+}
+
+.new-games-button {
+  font-size: 0.9em !important;
+  padding: 12px 20px !important;
+    background-color: var(--color-superficie);
+}
+
+.account-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.account-buttons button:disabled {
+  font-size: 0.6em !important; /* Usamos !important para asegurar que sobreescriba el estilo general */
+  padding: 8px 12px !important;
+  background-color: var(--color-superficie);
+  border-color: var(--color-borde-glow);
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+.soon-buttons button:disabled {
+  font-size: 0.7em; /* Letra más pequeña */
+  padding: 8px 15px; /* Botones más pequeños */
+  background-color: var(--color-superficie);
+  border-color: var(--color-borde-glow);
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.soon-buttons button:disabled:hover {
+    transform: none;
+}

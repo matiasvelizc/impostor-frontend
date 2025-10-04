@@ -1,0 +1,59 @@
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* Espacio entre los elementos */
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.selection-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.selection-actions button {
+  flex: 1; /* Hace que ambos botones ocupen el mismo espacio */
+  font-size: var(--font-size-lg);
+  padding: 25px;
+}
+
+.join-lobby-box {
+  width: 100%;
+  padding: 2rem;
+  border: 2px solid var(--color-cyan);
+  border-radius: 12px;
+  box-shadow: var(--neon-glow-cyan);
+  background-color: var(--color-superficie);
+  box-sizing: border-box; /* Importante para que el padding no desborde */
+}
+
+.join-lobby-box h2 {
+  margin-top: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-rosa);
+  text-shadow: var(--neon-glow-rosa);
+}
+
+.join-lobby-box input {
+    text-transform: uppercase; /* Para que el código siempre se vea en mayúsculas */
+}
+
+.how-to-play button {
+    background: transparent;
+    box-shadow: none;
+    font-size: var(--font-size-base);
+}
+
+.join-lobby-box h2 {
+  color: var(--color-texto); /* Lo cambia a blanco */
+  text-shadow: none; /* Le quita el brillo rosa para mayor legibilidad */
+}
+
+/* Reglas para responsividad móvil */
+@media (max-width: 600px) {
+  .selection-actions {
+    flex-direction: column;
+  }
+}

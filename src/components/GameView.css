@@ -1,0 +1,206 @@
+/* En src/components/GameView.css */
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 8rem); /* Ajustamos la altura para dar más espacio */
+  width: 100%;
+}
+
+/* LA PIZARRA (Ahora más ancha y centrada) */
+.whiteboard {
+  flex-grow: 1;
+  background-color: var(--color-superficie);
+  border: 2px solid var(--color-cyan);
+  border-radius: 12px;
+  box-shadow: var(--neon-glow-cyan);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; /* Centra la pizarra horizontalmente */
+  width: 100%;
+  max-width: 900px; /* Ancho máximo de la pizarra */
+  box-sizing: border-box;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-md);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-borde-glow, #444);
+  margin-bottom: 1rem;
+}
+
+.turn-player {
+  color: var(--color-rosa);
+  text-shadow: var(--neon-glow-rosa);
+}
+
+.clue-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.clue-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clue-history li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #333;
+  font-size: var(--font-size-md);
+}
+
+/* --- NUEVO: ESTILO PARA EL NOMBRE DEL JUGADOR EN LAS PISTAS --- */
+.clue-player-name {
+  font-weight: bold;
+}
+
+.input-area {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.input-area input {
+  flex-grow: 1;
+}
+
+/* LA BARRA DE JUGADORES (Tarjetas más grandes) */
+.player-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 1.5rem 0;
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo para la barra */
+  margin: 0 auto;
+}
+
+.player-card {
+  flex-basis: 180px; /* Ancho base más grande */
+  flex-grow: 1;
+  padding: 15px; /* Más padding vertical */
+  border: 2px solid var(--color-borde-glow, #444);
+  border-radius: 8px;
+  background-color: var(--color-superficie);
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  /* --- NUEVO: El borde ahora tendrá el color del jugador --- */
+  border-bottom-width: 5px; /* Borde inferior más grueso */
+}
+
+.player-card .player-name {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-card .player-role {
+  font-size: var(--font-size-base);
+  color: var(--color-cyan);
+}
+
+.player-card.eliminated {
+  opacity: 0.4;
+  filter: grayscale(80%);
+  border-color: #444;
+}
+
+.player-card.active-turn {
+  border-color: var(--color-rosa);
+  box-shadow: var(--neon-glow-rosa);
+  transform: scale(1.05);
+}
+
+.role-info .role-name {
+  color: var(--color-texto);
+  text-shadow: var(--neon-glow-cyan);
+  font-size: 1.2em; /* Un poco más grande para destacar */
+}
+
+.secret-word-label {
+  text-shadow: var(--neon-glow-rosa);
+  color: #ffffff; /* Un color más sutil para la etiqueta */
+  
+}
+
+.role-info .secret-word {
+  font-size: 1.5em; /* Hacemos la palabra secreta más grande */
+  font-size: var(--font-size-md);
+  text-shadow: var(--neon-glow-cyan);
+  margin-top: 5px;
+}
+
+
+@media (max-width: 600px) {
+
+  .game-container {
+    /* Reducimos la altura en móvil para dar más espacio si el teclado aparece */
+    height: calc(100vh - 120px); 
+  }
+
+  .whiteboard {
+    padding: 1rem; /* Reducimos el padding interno de la pizarra */
+  }
+
+  .game-info {
+    flex-direction: column; /* Apilamos "Ronda" y "Turno de" */
+    align-items: center;
+    gap: 0.9rem; /* Espacio entre ellos */
+    margin-bottom: 1rem;
+  }
+
+  .role-info h3, .role-info h4 {
+    /* Reducimos el tamaño de la fuente del rol y la palabra secreta */
+    font-size: var(--font-size-md);
+        gap: 2.0rem; /* Espacio entre ellos */
+  }
+
+  .clue-history li {
+    font-size: var(--font-size-base); /* Hacemos las pistas un poco más pequeñas */
+  }
+
+  .player-bar {
+    gap: 5px; /* Reducimos el espacio entre las tarjetas de jugador */
+    padding: 0.5rem 0;
+  }
+
+  .player-card {
+    min-width: 80px; /* Hacemos las tarjetas un poco más pequeñas */
+    padding: 8px;
+  }
+
+  .player-card .player-name {
+    font-size: var(--font-size-base); /* Ajustamos el nombre del jugador */
+  }
+
+  .player-card .player-role {
+    font-size: clamp(8px, 1.5vw, 10px); /* Hacemos el rol '(Solucionador)' más pequeño */
+  }
+
+  .secret-word-container {
+  margin-top: 15px; /* Añade espacio extra debajo del rol */
+}
+
+.secret-word-label {
+  display: block; /* Hace que ocupe su propia línea */
+  font-size: var(--font-size-base);
+  text-shadow: var(--neon-glow-rosa);
+  color: #ffffff; /* Un color más sutil para la etiqueta */
+}
+
+.role-info .secret-word {
+  display: block; /* Hace que la palabra también ocupe su propia línea */
+  font-size: 1.5em; /* Hacemos la palabra secreta más grande */
+  font-size: var(--font-size-md);
+  text-shadow: var(--neon-glow-cyan);
+  margin-top: 5px;
+}
+}

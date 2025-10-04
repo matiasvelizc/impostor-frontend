@@ -1,0 +1,190 @@
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.room-code-box {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--color-rosa);
+  border-radius: 12px;
+  box-shadow: var(--neon-glow-rosa);
+  background-color: var(--color-superficie);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.code-label {
+  font-size: var(--font-size-base);
+  color: var(--color-texto-secundario, #aaa);
+  display: block;
+}
+
+.room-code {
+  font-size: var(--font-size-xl);
+  color: var(--color-rosa);
+  letter-spacing: 4px;
+}
+
+.player-section {
+  flex-basis: 350px; /* Ancho fijo */
+  flex-shrink: 0;
+  display: flex; /* Lo convertimos en flexbox... */
+  flex-direction: column; /* ...para apilar la lista y el botón */
+  gap: 1.5rem; /* Espacio entre la lista y el botón */
+}
+
+.lobby-body > .player-section:only-child {
+  flex-basis: 600px; /* ...le damos un ancho mayor */
+  flex-grow: 0; /* Y evitamos que se estire más de la cuenta */
+}
+
+.player-list {
+  background-color: var(--color-superficie);
+  border: 2px solid var(--color-cyan);
+  border-radius: 12px;
+  box-shadow: var(--neon-glow-cyan);
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.player-list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+.player-list.full-width {
+  width: 100%;
+  flex-basis: auto;
+}
+
+
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  font-size: var(--font-size-lg);
+  border-bottom: 1px solid var(--color-fondo);
+}
+
+.player-item:last-child {
+  border-bottom: none;
+}
+
+.player-name {
+  font-weight: bold;
+}
+
+.player-score {
+  color: var(--color-cyan);
+}
+
+.start-game-button {
+  width: 650px; /* <-- CAMBIO: Ahora el botón de iniciar tiene un ANCHO FIJO */
+  padding: 20px;
+  font-size: 1.5em;
+  background-color: var(--color-rosa);
+  border-color: var(--color-rosa);
+  color: white;
+  box-shadow: var(--neon-glow-rosa);
+}
+
+.start-game-button:hover {
+  background-color: var(--color-rosa);
+  color: white;
+}
+
+.how-to-play button {
+  background: transparent;
+  box-shadow: none;
+  font-size: var(--font-size-base);
+  color: #888;
+  border-color: #444;
+}
+
+/* En Lobby.css */
+
+.lobby-body {
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center; /* <-- AÑADE ESTA LÍNEA */
+}
+
+.settings-box {
+  flex-grow: 1;   /* <-- CAMBIO: Ahora la caja de filtros CRECE para ocupar el espacio sobrante */
+  padding: 1rem;
+  border: 2px solid var(--color-azul-brillante);
+  border-radius: 12px;
+  background-color: var(--color-superficie);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.settings-box h4 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.category-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: system-ui, sans-serif; /* Usamos una fuente más legible para esto */
+  font-size: 0.9em;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.category-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* En Lobby.css (añadir al final) */
+
+.main-category {
+  margin-bottom: 1rem;
+}
+.main-category h5 {
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--color-azul-brillante);
+  color: var(--color-azul-brillante);
+  text-align: left;
+}
+.subcategory-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 800px) {
+  .lobby-body {
+    flex-direction: column;
+  }
+  .player-section {
+    width: 100%;
+    flex-basis: auto;
+  }
+  
+  /* Anulamos la regla :only-child en móvil para que ocupe el ancho completo */
+  .lobby-body > .player-section:only-child {
+    flex-basis: auto;
+  }
+}
